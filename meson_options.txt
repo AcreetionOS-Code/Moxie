@@ -33,11 +33,6 @@ option('glx',
   description: 'Enable GLX support'
 )
 
-option('wayland',
-  type: 'boolean',
-  value: true,
-  description: 'Enable Wayland support'
-)
 
 option('native_backend',
   type: 'boolean',
@@ -57,11 +52,6 @@ option('egl_device',
   description: 'Enable EGLDevice and EGLStream renderer support'
 )
 
-option('wayland_eglstream',
-  type: 'boolean',
-  value: false,
-  description: 'Enable Wayland EGLStream support client support'
-)
 
 option('udev',
   type: 'boolean',
@@ -147,20 +137,3 @@ option('verbose',
   description: 'Enable verbose logging ability'
 )
 
-option('xwayland_path',
-  type: 'string',
-  value: '',
-  description: 'Path to Xwayland executable'
-)
-
-option('xwayland_grab_default_access_rules',
-  type: 'string',
-  value: 'gnome-boxes,remote-viewer,virt-viewer,virt-manager,vinagre,vncviewer,Xephyr',
-  description: 'Comma delimited list of applications ressources or class allowed to issue X11 grabs in Xwayland'
-)
-
-option('xwayland_initfd',
-  type: 'feature',
-  value: 'auto',
-  description: 'Whether -initfd argument is passed to Xwayland to guarantee services (e.g. gsd-xsettings) startup before applications'
-)

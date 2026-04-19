@@ -157,7 +157,7 @@ if have_gles2
   endif
 endif
 
-have_wayland = get_option('wayland')
+have_wayland = false  # Wayland support removed for Moxie (X11/xlibre-only)
 
 if have_wayland
   wayland_server_dep = dependency('wayland-server', version: wayland_server_req)
@@ -211,7 +211,7 @@ endif
 
 have_egl_device = get_option('egl_device')
 
-have_wayland_eglstream = get_option('wayland_eglstream')
+have_wayland_eglstream = false  # Wayland EGLStream support removed for Moxie
 
 if have_wayland_eglstream
   wayland_eglstream_protocols_dep = dependency('wayland-eglstream-protocols')
@@ -269,7 +269,8 @@ if have_tests
   have_core_tests = get_option('core_tests')
   if have_core_tests
     if not have_wayland
-      error('Tests require Wayland to be enabled')
+      message('Wayland disabled; disabling core tests for Moxie')
+      have_core_tests = false
     endif
   endif
 
