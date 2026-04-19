@@ -1,47 +1,27 @@
-Muffin is a fork of Mutter, specifically adapted to work as the window manager for the Cinnamon desktop environment.
+Moxie
 
-# Mutter
+Moxie is a fork of Muffin (itself derived from Mutter). Moxie is X11-only and
+built on xlibre; traditional X11 implementations are deprecated in favor of
+xlibre-based code paths. Wayland and Xwayland support have been removed.
 
-Mutter is a Wayland display server and X11 window manager and compositor library.
+What Moxie is
 
-When used as a Wayland display server, it runs on top of KMS and libinput. It
-implements the compositor side of the Wayland core protocol as well as various
-protocol extensions. It also has functionality related to running X11
-applications using Xwayland.
+Moxie acts as an X11 window manager and compositing manager. It provides
+functionality for window management, compositing, focus tracking, workspace
+management, keybindings, and monitor configuration. It uses the bundled forks
+of Cogl and Clutter for rendering and UI where applicable.
 
-When used on top of Xorg it acts as a X11 window manager and compositing manager.
+Contributing
 
-It contains functionality related to, among other things, window management,
-window compositing, focus tracking, workspace management, keybindings and
-monitor configuration.
+To contribute, open pull requests at https://github.com/acreetionos-code/Moxie.
 
-Internally it uses a fork of Cogl, a hardware acceleration abstraction library
-used to simplify usage of OpenGL pipelines, as well as a fork af Clutter, a
-scene graph and user interface toolkit.
+Coding style
 
-Mutter is used by, for example, GNOME Shell, the GNOME core user interface, and
-by  Gala, elementary OS's window manager. It can also be run standalone, using
-the  command "mutter", but just running plain mutter is only intended for
-debugging purposes.
+Follow the existing coding conventions in the tree. When in doubt, match the
+surrounding code. Provide an issue or PR link in commit messages when
+appropriate.
 
-## Contributing
+License
 
-To contribute, open merge requests at https://gitlab.gnome.org/GNOME/mutter.
-
-The coding style used is primarily the GNU flavor of the [GNOME coding
-style](https://developer.gnome.org/programming-guidelines/stable/c-coding-style.html.en)
-with some minor additions such as preferring `stdint.h` types over GLib
-fundamental types, and a soft 80 character line limit. However, in general,
-look at the file you're editing for inspiration.
-
-Commit messages should follow the [GNOME commit message
-guidelines](https://wiki.gnome.org/Git/CommitMessages). We require an URL
-to either an issue or a merge request in each commit.
-
-## License
-
-Mutter is distributed under the terms of the GNU General Public License,
-version 2 or later. See the [COPYING][license] file for detalis.
-
-[bug-tracker]: https://gitlab.gnome.org/GNOME/mutter/issues
-[license]: COPYING
+Moxie is distributed under the GNU General Public License, version 2 or later.
+See the COPYING file for details.
