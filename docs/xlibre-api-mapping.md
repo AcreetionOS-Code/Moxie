@@ -26,9 +26,19 @@ Mapping table (fill in mappings)
 | X11/XCB API | xlibre equivalent | Notes / action item |
 |-------------|-------------------|---------------------|
 | XOpenDisplay | xlibre_display_open() | Central display open; wrap platform details |
-| XCreateWindow| xlibre_window_create() | Map window properties and visual information |
-| XGetXCBConnection | xlibre_get_xcb_connection() | Provide an XCB-compatible connection or native xlibre interface |
-| xcb_randr_* | xlibre_randr_* | Map RandR queries to xlibre output enumeration and modes |
+| XCloseDisplay | xlibre_display_close() | Close display and cleanup resources |
+| XCreateWindow | xlibre_window_create() | Map window properties, visuals, and parent/child semantics |
+| XDestroyWindow | xlibre_window_destroy() | Destroy window and free resources |
+| XMapWindow / XUnmapWindow | xlibre_window_map()/xlibre_window_unmap() | Map/unmap visibility state |
+| XInternAtom | xlibre_intern_atom() | Map atoms; consider caching strategy |
+| XGetWindowProperty | xlibre_get_window_property() | Property retrieval bridge (also for XCB semantics) |
+| XGetXCBConnection | xlibre_get_xcb_connection() | Provide XCB-compatible connection or native xlibre API |
+| xcb_connect / xcb_disconnect | xlibre_xcb_connect()/xlibre_xcb_disconnect() | If providing an XCB compatibility layer |
+| xcb_* (randr, res, render) | xlibre_randr_*, xlibre_res_*, xlibre_render_* | Map RandR/res/render functionality to xlibre equivalents |
+| XGetErrorText / XGetErrorText (glib wrappers) | xlibre_get_error_text() | Centralize error strings in shim |
+| XPending / XNextEvent | xlibre_event_pending()/xlibre_event_next() | Event loop abstraction |
+| XFlush / XSync | xlibre_flush()/xlibre_sync() | Ensure proper command flushing/sync semantics |
+| XCreateWindow / GLX integration (Cogl) | xlibre_gl_window_create() | Provide integration points for GL backends |
 
 Next steps
 
