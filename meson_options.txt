@@ -137,3 +137,29 @@ option('verbose',
   description: 'Enable verbose logging ability'
 )
 
+# Deprecated/forced off options for Moxie (accept them to avoid external builds
+# passing unknown options during packaging). Values are ignored since have_wayland
+# and have_wayland_eglstream are forced false in meson.build.
+option('wayland',
+  type: 'boolean',
+  value: false,
+  description: 'Deprecated: Wayland support (disabled in Moxie)'
+)
+
+option('wayland_eglstream',
+  type: 'boolean',
+  value: false,
+  description: 'Deprecated: Wayland EGLStream support (disabled in Moxie)'
+)
+
+option('wayland_egl',
+  type: 'boolean',
+  value: false,
+  description: 'Deprecated: Wayland EGL support (disabled in Moxie)'
+)
+
+  type: 'boolean',
+  value: true,
+  description: 'Enable verbose logging ability'
+)
+
