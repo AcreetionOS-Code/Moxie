@@ -37,15 +37,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <X11/Xatom.h>
-#include <X11/XKBlib.h>
-#include <X11/extensions/shape.h>
-#include <X11/Xcursor/Xcursor.h>
-#include <X11/extensions/Xcomposite.h>
-#include <X11/extensions/Xdamage.h>
-#include <X11/extensions/Xfixes.h>
-#include <X11/extensions/Xinerama.h>
-#include <X11/extensions/Xrandr.h>
+#include "xlibre-compat.h"
 
 #include "backends/meta-backend-private.h"
 #include "backends/meta-dnd-private.h"

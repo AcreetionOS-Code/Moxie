@@ -35,9 +35,8 @@
 
 #include "backends/x11/meta-backend-x11.h"
 
-#include <X11/XKBlib.h>
-#include <X11/Xlib-xcb.h>
-#include <X11/extensions/sync.h>
+#include "xlibre-compat.h"
+#include <xkbcommon/xkbcommon-x11.h>
 #include <stdlib.h>
 #include <string.h>
 #include <xkbcommon/xkbcommon-x11.h>
