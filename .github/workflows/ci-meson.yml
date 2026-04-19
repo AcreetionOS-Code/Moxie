@@ -18,7 +18,7 @@ jobs:
     - name: Setup system dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y build-essential pkg-config python3-pip python3-venv ninja-build git
+        sudo apt-get install -y build-essential pkg-config python3-pip python3-venv ninja-build git libgraphene-1.0-dev libgirepository1.0-dev gobject-introspection
         # Optional XCB/X11 deps (so xlibre shim tests can run if available)
         sudo apt-get install -y libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-res0-dev libx11-dev libx11-xcb-dev || true
 
