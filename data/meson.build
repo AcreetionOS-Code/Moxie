@@ -31,8 +31,6 @@ configure_file(
 )
 
 configure_file(
-  input: 'org.cinnamon.muffin.wayland.gschema.xml.in',
-  output: 'org.cinnamon.muffin.wayland.gschema.xml',
   configuration: gschema_config,
   install_dir: schemadir
 )
