@@ -4,6 +4,12 @@ clutter_includedir = join_paths(includedir, clutter_includesubdir)
 clutter_includepath = include_directories('.', 'clutter')
 clutter_includes = [clutter_includepath, cogl_includepath]
 
+# Force Wayland disabled for Moxie (X11/xlibre-only). This prevents
+# standalone builds of the clutter subproject from re-enabling Wayland
+# based on system pkg-config detection.
+have_wayland = false
+
+
 clutter_c_args = [
   '-DCLUTTER_SYSCONFDIR="@0@"'.format(join_paths(prefix, sysconfdir)),
   '-DCLUTTER_COMPILATION=1',
