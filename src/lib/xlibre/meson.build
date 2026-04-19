@@ -6,6 +6,12 @@ xlibre_shim_sources = ['xlibre-shim.c']
 # doesn't require adding a library target elsewhere yet.
 test_sources = ['xlibre-shim.c', 'test-xlibre-shim.c']
 
-test_exe = executable('test-xlibre-shim', test_sources, install: false)
+xcb_dep = dependency('xcb', required: false)
+
+if xcb_dep.found()
+  test_exe = executable('test-xlibre-shim', test_sources, dependencies: xcb_dep, install: false, c_args: ['-DHAVE_XCB'])
+else
+  test_exe = executable('test-xlibre-shim', test_sources, install: false)
+endif
 
 test('xlibre-shim', test_exe)

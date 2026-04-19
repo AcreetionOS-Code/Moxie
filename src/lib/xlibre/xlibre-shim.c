@@ -1,10 +1,15 @@
-/* xlibre shim basic implementation for Moxie
- * Provides simple open/close and an XCB bridge stub.
+/* xlibre shim with optional XCB bridge for Moxie
+ * If libxcb is available at build time, HAVE_XCB will be defined and
+ * xlibre_get_xcb_connection will return a live xcb_connection_t*.
  */
 
 #include "xlibre-shim.h"
 #include <stdlib.h>
 #include <string.h>
+
+#ifdef HAVE_XCB
+#include <xcb/xcb.h>
+#endif
 
 struct _xlibre_display {
     char *name;
@@ -36,6 +41,17 @@ xlibre_display_close(xlibre_display_t *display)
 void *
 xlibre_get_xcb_connection(xlibre_display_t *display)
 {
-    (void)display; /* stub for now */
+    (void)display;
+#ifdef HAVE_XCB
+    xcb_connection_t *conn = xcb_connect(NULL, NULL);
+    if (!conn)
+        return NULL;
+    if (xcb_connection_has_error(conn)) {
+        xcb_disconnect(conn);
+        return NULL;
+    }
+    return conn;
+#else
     return NULL;
+#endif
 }
