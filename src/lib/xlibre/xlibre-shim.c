@@ -1,31 +1,41 @@
-/* xlibre shim skeleton for Moxie
- * Provides: xlibre_display_open/close, xlibre_get_xcb_connection
- * Note: This is a minimal skeleton; implement internals to match xlibre
+/* xlibre shim basic implementation for Moxie
+ * Provides simple open/close and an XCB bridge stub.
  */
 
 #include "xlibre-shim.h"
+#include <stdlib.h>
+#include <string.h>
 
 struct _xlibre_display {
-    /* opaque handle to xlibre display */
-    void *backend;
+    char *name;
+    void *backend; /* opaque backend pointer for future use */
 };
 
 xlibre_display_t *
 xlibre_display_open(const char *name)
 {
-    /* TODO: implement opening logic */
-    return NULL;
+    xlibre_display_t *d = malloc(sizeof(*d));
+    if (!d)
+        return NULL;
+
+    d->name = (name != NULL) ? strdup(name) : strdup("default");
+    d->backend = NULL; /* TODO: initialize real backend */
+    return d;
 }
 
 void
 xlibre_display_close(xlibre_display_t *display)
 {
-    /* TODO: cleanup */
+    if (!display)
+        return;
+
+    free(display->name);
+    free(display);
 }
 
 void *
 xlibre_get_xcb_connection(xlibre_display_t *display)
 {
-    /* TODO: return an XCB-compatible connection or NULL */
+    (void)display; /* stub for now */
     return NULL;
 }
